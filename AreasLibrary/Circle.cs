@@ -5,7 +5,6 @@ namespace AreasLibrary
     public class Circle : IShape
     {
         double _radius;
-        private double _area;
 
         public double Radius 
         { 
@@ -14,17 +13,13 @@ namespace AreasLibrary
                 return _radius; 
             } 
             set 
-            { 
-                _radius = value;
-                CalculateArea();
-            } 
-        }
-        public double Area
-        {
-            get
             {
-                return _area;
-            }
+                if (value <= 0)
+                {
+                    throw new Exception("Радиус должен быть больше нуля");
+                }
+                _radius = value;
+            } 
         }
         public Circle(double r)
         {
@@ -33,7 +28,6 @@ namespace AreasLibrary
                 throw new Exception("Радиус должен быть больше нуля");
             }
             _radius = r;
-            _area = CalculateArea();
         }
 
         public double CalculateArea()

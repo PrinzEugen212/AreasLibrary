@@ -17,7 +17,7 @@ namespace Tests
             public void TriangleAreaTest(double a, double b, double c, double result)
             {
                 Triangle triangle = new Triangle(a, b, c);
-                Assert.AreEqual(triangle.Area, result, 0.05);
+                Assert.AreEqual(triangle.CalculateArea(), result, 0.05);
             }
 
             [TestCase(5, 78.5)]
@@ -28,13 +28,42 @@ namespace Tests
             public void CircleAreaTest(double radius, double result)
             {
                 Circle circle = new Circle(radius);
-                Assert.AreEqual(circle.Area, result, 0.05);
+                Assert.AreEqual(circle.CalculateArea(), result, 0.05);
             }
             [TestCase(3.0, 4.0, 5.0, true)]
             public void RectangularTriangleTest(double a, double b, double c, bool result)
             {
                 Triangle triangle = new Triangle(a, b, c);
                 Assert.AreEqual(triangle.CheckRectangular(), result);
+            }
+            [TestCase(1,1,6)]
+            [TestCase(7,3,3)]
+            [TestCase(100,49,50)]
+            public void IncorrectTriangleTests(double a, double b, double c)
+            {
+                try
+                {
+                    Triangle triangle = new Triangle(a, b, c);
+                }
+                catch (Exception ex)
+                {
+                    Assert.AreEqual(ex.Message, "Треугольника с такими сторонами не существует!");
+                }
+            }
+            [TestCase(-1, 1, 6)]
+            [TestCase(0, 0, 0)]
+            [TestCase(1, 1, -6)]
+            [TestCase(1, -1, 6)]
+            public void IncorrectInputTriangleTests(double a, double b, double c)
+            {
+                try
+                {
+                    Triangle triangle = new Triangle(a, b, c);
+                }
+                catch (Exception ex)
+                {
+                    Assert.AreEqual(ex.Message, "Неверное значение стороны/сторон треугольника - должно быть > 0");
+                }
             }
         }
 
