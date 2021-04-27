@@ -23,11 +23,7 @@ namespace AreasLibrary
         }
         public Circle(double r)
         {
-            if (r <= 0)
-            {
-                throw new Exception("Радиус должен быть больше нуля");
-            }
-            _radius = r;
+            Radius = r;
         }
 
         public double CalculateArea()

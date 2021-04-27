@@ -57,17 +57,7 @@ namespace AreasLibrary
             {
                 throw new Exception("Неверное значение стороны/сторон треугольника - должно быть > 0");
             }
-            try
-            {
-                CheckCorrect();
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message == "Треугольника с такими сторонами не существует!")
-                {
-                    throw new Exception(ex.Message);
-                }
-            }
+            CheckCorrect();
             _a = a;
             _b = b;
             _c = c;
