@@ -16,7 +16,7 @@ namespace AreasLibrary
             {
                 if (value <= 0)
                 {
-                    throw new Exception("Радиус должен быть больше нуля");
+                    throw new IncorrectCircleException("Радиус должен быть больше нуля");
                 }
                 _radius = value;
             } 

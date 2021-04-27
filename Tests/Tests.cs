@@ -45,9 +45,9 @@ namespace Tests
                 {
                     Triangle triangle = new Triangle(a, b, c);
                 }
-                catch (Exception ex)
+                catch (IncorrectTriangleException)
                 {
-                    Assert.AreEqual(ex.Message, "Треугольника с такими сторонами не существует!");
+                    Assert.True(true);
                 }
             }
             [TestCase(-1, 1, 6)]
@@ -60,9 +60,9 @@ namespace Tests
                 {
                     Triangle triangle = new Triangle(a, b, c);
                 }
-                catch (Exception ex)
+                catch (IncorrectTriangleException)
                 {
-                    Assert.AreEqual(ex.Message, "Неверное значение стороны/сторон треугольника - должно быть > 0");
+                    Assert.True(true);
                 }
             }
         }

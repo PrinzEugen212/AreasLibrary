@@ -55,9 +55,9 @@ namespace AreasLibrary
         {
             if (a <= 0 || b <= 0 || c <= 0)
             {
-                throw new Exception("Неверное значение стороны/сторон треугольника - должно быть > 0");
+                throw new IncorrectTriangleException("Неверное значение стороны/сторон треугольника - должно быть > 0");
             }
-            CheckCorrect();
+            CheckCorrect(a, b, c);
             _a = a;
             _b = b;
             _c = c;
@@ -85,11 +85,11 @@ namespace AreasLibrary
             }
             return Math.Pow(max, 2) - (Math.Pow(other1, 2) + Math.Pow(other2, 2)) < 0.0000001;
         }
-        private void CheckCorrect()
+        private void CheckCorrect(double a, double b, double c)
         {
-            if (_a >= _b + _c || _b >= _a + _c || _c >= _a + _b)
+            if (a >= b + c || b >= a + c || c >= a + b)
             {
-                throw new Exception("Треугольника с такими сторонами не существует!");
+                throw new IncorrectTriangleException("Треугольника с такими сторонами не существует!");
             }
         }
     }
