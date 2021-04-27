@@ -55,7 +55,7 @@ namespace AreasLibrary
         {
             if (a <= 0 || b <= 0 || c <= 0)
             {
-                throw new IncorrectTriangleException("Неверное значение стороны/сторон треугольника - должно быть > 0");
+                throw new ArgumentException("Неверное значение стороны/сторон треугольника - должно быть > 0");
             }
             CheckCorrect(a, b, c);
             _a = a;
@@ -89,7 +89,7 @@ namespace AreasLibrary
         {
             if (a >= b + c || b >= a + c || c >= a + b)
             {
-                throw new IncorrectTriangleException("Треугольника с такими сторонами не существует!");
+                throw new ArgumentException("Треугольника с такими сторонами не существует!");
             }
         }
     }

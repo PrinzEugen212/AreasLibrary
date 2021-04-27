@@ -45,25 +45,45 @@ namespace Tests
                 {
                     Triangle triangle = new Triangle(a, b, c);
                 }
-                catch (IncorrectTriangleException)
+                catch (ArgumentException)
                 {
                     Assert.True(true);
                 }
             }
-            [TestCase(-1, 1, 6)]
-            [TestCase(0, 0, 0)]
-            [TestCase(1, 1, -6)]
-            [TestCase(1, -1, 6)]
-            public void IncorrectInputTriangleTests(double a, double b, double c)
+            [TestCase(-1, 1, 6, false)]
+            [TestCase(0, 0, 0, false)]
+            [TestCase(1, 1, -6, false)]
+            [TestCase(1, -1, 6, false)]
+            [TestCase(3, 4, 5, true)]
+            public void IncorrectInputTriangleTests(double a, double b, double c, bool result)
             {
+                bool inTestResult = true;
                 try
                 {
                     Triangle triangle = new Triangle(a, b, c);
                 }
-                catch (IncorrectTriangleException)
+                catch (ArgumentException)
                 {
-                    Assert.True(true);
+                    inTestResult = !inTestResult;
                 }
+                Assert.AreEqual(result, inTestResult);
+            }
+            [TestCase(0, false)]
+            [TestCase(-1, false)]
+            [TestCase(1, true)]
+            [TestCase(100, true)]
+            public void IncorrectInputCircleTests(double radius, bool result)
+            {
+                bool inTestResult = true;
+                try
+                {
+                    Circle triangle = new Circle(radius);
+                }
+                catch (ArgumentException)
+                {
+                    inTestResult = !inTestResult;
+                }
+                Assert.AreEqual(result, inTestResult);
             }
         }
 
