@@ -87,7 +87,7 @@ namespace AreasLibrary
         }
         private void CheckCorrect()
         {
-            if (_a > _b + _c || _b > _a + _c || _c > _a + _b)
+            if (_a >= _b + _c || _b >= _a + _c || _c >= _a + _b)
             {
                 throw new Exception("Треугольника с такими сторонами не существует!");
             }
